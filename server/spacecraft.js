@@ -12,15 +12,17 @@ function Spacecraft() {
         "pwr.c": 8.15,
         "pwr.v": 30
     };
+
     this.history = {};
     this.listeners = [];
+
     Object.keys(this.state).forEach(function (k) {
         this.history[k] = [];
     }, this);
 
     setInterval(function () {
         this.updateState();
-        this.generateTelemetry();
+        this.generateTelemetry(); 
     }.bind(this), 1000);
 
     console.log("Example spacecraft launched!");
@@ -56,9 +58,9 @@ Spacecraft.prototype.updateState = function () {
  * listeners.
  */
 Spacecraft.prototype.generateTelemetry = function () {
-    var timestamp = Date.now(), sent = 0;
+    const timestamp = Date.now(), sent = 0;
     Object.keys(this.state).forEach(function (id) {
-        var state = { timestamp: timestamp, value: this.state[id], id: id};
+        const state = { timestamp: timestamp, value: this.state[id], id: id};
         this.notify(state);
         this.history[id].push(state);
         this.state["comms.sent"] += JSON.stringify(state).length;
