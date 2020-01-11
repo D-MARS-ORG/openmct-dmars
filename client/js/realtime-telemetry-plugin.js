@@ -1,24 +1,22 @@
 const RealtimeTelemetryPlugin = () => openmct => {
-    console.log("RealtimeTelemetryPlugin Installed");
-
     const soket = new WebSocket(`${location.origin.replace(/^http/, 'ws')}/realtime/`);
     const listener = {};
 
     soket.onmessage = ({ data }) => {
-        const point = JSON.parse(data);
+        const propertyInfo = JSON.parse(data);
 
-        listener[point.id] && listener[point.id](point);
+        listener[propertyInfo.name] && listener[propertyInfo.name](point);
     };
 
     const TelemetryProvider = {
         supportsSubscribe: domainObject => domainObject.type === type,
-        subscribe: (domainObject, callback) => {
-            listener[domainObject.identifier.key] = callback;
-            soket.send(`subscribe ${domainObject.identifier.key}`);
+        subscribe: ({identifier: key}, callback) => {
+            listener[key] = callback;
+            soket.send(`subscribe ${key}`);
 
             return () => {
-                delete listener[domainObject.identifier.key];
-                soket.send(`unsubscribe ${domainObject.identifier.key}`);
+                delete listener[key];
+                soket.send(`unsubscribe ${key}`);
             };
         }
     };

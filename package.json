@@ -4,28 +4,30 @@
   "description": "Open MCT for D-MARS",
   "main": "server/app.js",
   "scripts": {
-    "start": "nodemon --exec babel-node server/app.js"
+    "start": "nodemon -r dotenv/config --exec babel-node server/app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+"
+    "url": "git+https://github.com/D-MARS-ORG/openmct-dmars.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/D-MARS-ORG/openmct-dmars/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/D-MARS-ORG/openmct-dmars#readme",
   "dependencies": {
     "@babel/core": "^7.7.7",
     "@babel/node": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
+    "axios": "^0.19.1",
     "babel-loader": "^8.0.6",
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "express-ws": "^4.0.0",
     "nodemon": "^2.0.2",
     "openmct": "https://github.com/nasa/openmct.git",
+    "querystring": "^0.2.0",
     "ws": "^6.1.2"
   }
 }

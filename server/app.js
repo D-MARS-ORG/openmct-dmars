@@ -1,28 +1,16 @@
-import dotenv from 'dotenv';
 import express from 'express';
 import expressWs from 'express-ws';
-
-import Spacecraft from './spacecraft';
-import RealtimeRouter from './routes/realtime';
-import HistoryRouter from './routes/history';
-
-dotenv.config();
+import Router from './routes/router';
 
 const { app } = expressWs(express());
 
-const spacecraft = new Spacecraft();
-const realtimeRouter = RealtimeRouter(spacecraft);
-const historyRouter = HistoryRouter(spacecraft);
+app.use('/', Router())
 
-app.use('/', express.static(__dirname + '/../client'));
-app.use('/openmct', express.static(__dirname + '/../node_modules/openmct/dist'));
-app.use('/realtime', realtimeRouter);
-app.use('/history', historyRouter);
-
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8080;
+const url = `http://localhost:${port}`;
 
 app.listen(port, () => {
-    console.log(`Open MCT hosted at http://localhost:${port}`);
-    console.log(`History hosted at http://localhost:${port}/history`);
-    console.log(`Realtime hosted at ws://localhost:${port}/realtime`);
+    console.log(`Open MCT hosted at http://${url}`);
+    console.log(`History hosted at http://${url}/history`);
+    console.log(`Realtime hosted at ws://${url}/realtime`);
 });
