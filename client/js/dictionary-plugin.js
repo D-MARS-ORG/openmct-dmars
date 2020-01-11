@@ -1,18 +1,9 @@
-const namespace = 'example.taxonomy';
-const key = 'spacecraft';
-const type = 'example.telemetry';
-
-const getDictionary = async () => {
-    const res = await fetch('/js/dictionary.json');
-    const data = await res.json();
-
-    return data;
-};
+const namespace = 'd-mars';
+const key = 'habitate026';
+const type = 'sensors';
 
 const ObjectProvider = {
     get: async identifier => {
-        const dictionary = await getDictionary();
-
         if (identifier.key === key) {
             return {
                 identifier,
@@ -21,15 +12,15 @@ const ObjectProvider = {
                 location: 'root'
             }
         } else {
-            const measurement = dictionary.measurements
+            const sensor = dictionary.sensors
                 .filter(m => m.key === identifier.key)[0];
 
             return {
                 identifier,
-                name: measurement.name,
+                name: sensor.name,
                 type,
                 telemetry: {
-                    values: measurement.values
+                    values: sensor.values
                 },
                 location: `${namespace}:${key}`
             };
@@ -40,16 +31,11 @@ const ObjectProvider = {
 const CompositionProvider = {
     appliesTo: domainObject => domainObject.identifier.namespace === namespace &&
         domainObject.type === 'folder',
-    load: async domainObject => {
-        const dictionary = await getDictionary();
-
-        return dictionary.measurements.map(m => ({ namespace, key: m.key }));
-    }
+    load: async domainObject => dictionary.sensors.map(m => ({ namespace, key: m.key }))
 }
 
 const TelemetryPointType = {
-    name: 'Eample Telemetry Point',
-    description: 'Eample Telemetry Point from tutorial.',
+    name: 'Sensor',
     cssClass: 'icon-telemetry'
 };
 

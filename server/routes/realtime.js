@@ -1,17 +1,18 @@
 import express from 'express';
 
-export default spacecraft => {
+export default habitate => {
     const router = express.Router();
 
     router.ws('/', ws => {
-        const notifySubscribers = point => {
-            if (subscribed[point.id]) {
-                ws.send(JSON.stringify(point));
+        const notifySubscribers = sensorInfo => {
+            if (subscribed[sensorInfo.name]) {
+                ws.send(JSON.stringify(sensorInfo));
             }
         };
 
-        const unlisten = spacecraft.listen(notifySubscribers);
+        const unlisten = habitate.listen(notifySubscribers);
         const subscribed = {};
+
         const handlers = {
             subscribe: id => {
                 subscribed[id] = true;
@@ -22,8 +23,9 @@ export default spacecraft => {
         };
 
         ws.on('message', message => {
-            const parts = message.split(' '),
-                handler = handlers[parts[0]];
+            const parts = message.split(' ');
+            const handler = handlers[parts[0]];
+            
             if (handler) {
                 handler.apply(handlers, parts.slice(1));
             }
