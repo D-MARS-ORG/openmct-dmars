@@ -1,28 +1,20 @@
 const namespace = 'd-mars';
 const key = 'habitate026';
-const type = 'sensors';
+const type = 'telemetryPoint';
 
 const ObjectProvider = {
     get: async identifier => {
         if (identifier.key === key) {
             return {
                 identifier,
-                name: dictionary.name,
+                name: dictionary.rootId,
                 type: 'folder',
                 location: 'root'
             }
         } else {
-            const sensor = dictionary.sensors
-                .filter(m => m.key === identifier.key)[0];
-
             return {
                 identifier,
-                name: sensor.name,
-                type,
-                telemetry: {
-                    values: sensor.values
-                },
-                location: `${namespace}:${key}`
+                ...dictionary.openmct[identifier.key]
             };
         }
     }
@@ -31,11 +23,15 @@ const ObjectProvider = {
 const CompositionProvider = {
     appliesTo: domainObject => domainObject.identifier.namespace === namespace &&
         domainObject.type === 'folder',
-    load: async domainObject => dictionary.sensors.map(m => ({ namespace, key: m.key }))
+    load: async ({ identifier }) => {
+        return Object.keys(dictionary.openmct)
+            .filter(k => dictionary.openmct[k].location === identifier.key)
+            .map(k => ({ namespace, key: k, location: dictionary.openmct[k].location}));
+    }
 }
 
 const TelemetryPointType = {
-    name: 'Sensor',
+    name: 'telemetryPoint',
     cssClass: 'icon-telemetry'
 };
 

@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>D-MARS MCT</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
     <script src="/openmct/openmct.js"></script>
     <script src="js/dictionary.js"></script>
     <script src="js/dictionary-plugin.js"></script>
@@ -16,6 +17,10 @@
         openmct.time.clock('local', {start: -15 * 60 * 1000, end: 0});
         openmct.time.timeSystem('utc');
         openmct.install(openmct.plugins.Espresso());
+        openmct.install(openmct.plugins.SummaryWidget());
+        openmct.install(openmct.plugins.MyItems());
+        openmct.install(openmct.plugins.ExampleImagery());
+        openmct.install(openmct.plugins.ImportExport());
 
         openmct.install(DictionaryPlugin());
         openmct.install(HistoricalTelemetryPlugin());
