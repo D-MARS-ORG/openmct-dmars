@@ -1,17 +1,17 @@
 import { login } from './telit-client';
 
-import Sensor from './models/Sensor';
-import SensorInfo from './models/SensorInfo';
+import StateItem from './models/StateItem';
+import StateItemInfo from './models/StateItemInfo';
 import TelitSensor from './models/TelitSensor';
 import TelitAlarm from './models/TelitAlarm';
 
 class Habitate {
-    readonly sensors: Sensor[];
-    readonly history: { [key: string]: SensorInfo[] } = {};
-    readonly listeners: ((s: SensorInfo) => void)[] = [];
+    readonly stateItems: StateItem[];
+    readonly history: { [key: string]: StateItemInfo[] } = {};
+    readonly listeners: ((s: StateItemInfo) => void)[] = [];
 
     constructor() {
-        this.sensors = [
+        this.stateItems = [
             new TelitSensor("acetone", 0),
             new TelitSensor("amonium", 0),
             new TelitSensor("methanol", 0),
@@ -30,7 +30,7 @@ class Habitate {
             new TelitAlarm("sound_sensor", 0)
         ];
 
-        this.sensors.forEach(s => this.history[s.Name] = [], this);
+        this.stateItems.forEach(s => this.history[s.Name] = [], this);
 
         this.init();
     };
@@ -38,16 +38,16 @@ class Habitate {
     notifyListeners() {
         const timestamp = Date.now();
 
-        this.sensors.forEach(s => {
-            const sensorInfo: SensorInfo = new SensorInfo(s.Name, s.Value, timestamp);
+        this.stateItems.forEach(s => {
+            const stateItemInfo: StateItemInfo = new StateItemInfo(s.Name, s.Value, timestamp);
 
-            this.notify(sensorInfo);
-            this.history[s.Name].push(sensorInfo);
+            this.notify(stateItemInfo);
+            this.history[s.Name].push(stateItemInfo);
         }, this);
     }
 
-    notify(sensorInfo: SensorInfo) {
-        this.listeners.forEach(l => l(sensorInfo));
+    notify(stateItemInfo: StateItemInfo) {
+        this.listeners.forEach(l => l(stateItemInfo));
     }
 
     async init() {
@@ -64,14 +64,14 @@ class Habitate {
     }
 
     update() {
-        this.sensors.forEach(s => s.Update());
+        this.stateItems.forEach(s => s.Update());
     }
 
-    listen(listener: (s: SensorInfo) => void) {
+    listen(listener: (s: StateItemInfo) => void) {
         this.listeners.push(listener);
 
         return function () {
-            this.listeners = this.listeners.filter((l: (s: SensorInfo) => void) => l !== listener);
+            this.listeners = this.listeners.filter((l: (s: StateItemInfo) => void) => l !== listener);
         }.bind(this);
     }
 }

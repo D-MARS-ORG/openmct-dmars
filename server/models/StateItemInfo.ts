@@ -1,4 +1,4 @@
-export default class SensorInfo {
+export default class StateItemInfo {
     readonly Timestamp: number;
     readonly Value: any;
     readonly Name: string;

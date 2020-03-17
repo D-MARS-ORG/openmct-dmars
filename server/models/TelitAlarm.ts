@@ -1,16 +1,8 @@
-import { login, getAlarmValue } from '../telit-client';
-import Sensor from './Sensor';
+import { getAlarmValue } from '../telit-client';
+import TelitStateItem from './TelitStateItem';
 
-export default class TelitAlarm extends Sensor {
-    async Update() {
-        const value = await getAlarmValue(this.Name);
-
-        if (value != null) {
-            this.Value = value;
-        }
-        else {
-            await login();
-            this.Update();
-        }
+export default class TelitAlarm extends TelitStateItem {
+    GetStateItemValue(name: string): Promise<any> {
+        return getAlarmValue(this.Name);
     }
 }

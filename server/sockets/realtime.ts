@@ -1,13 +1,13 @@
 import socketIO from 'socket.io';
 
 import Habitate from './../habitate';
-import SensorInfo from './../models/SensorInfo';
+import StateItemInfo from '../models/StateItemInfo';
 
 export default (io: socketIO.Namespace, habitate: Habitate) => {
     io.on('connection', socket => {
-        const notifySubscribers = (sensorInfo: SensorInfo) => {
-            if (subscribed[sensorInfo.Name]) {
-                socket.send(JSON.stringify(sensorInfo));
+        const notifySubscribers = (stateItemInfo: StateItemInfo) => {
+            if (subscribed[stateItemInfo.Name]) {
+                socket.send(JSON.stringify(stateItemInfo));
             }
         };
 
