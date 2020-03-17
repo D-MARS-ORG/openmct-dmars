@@ -1,29 +1,39 @@
 import axios from 'axios';
 import qs from 'querystring';
+import debounce from 'debounce-promise';
 
 const BASE_URL = 'https://api.devicewise.com';
-const TELIT_KEY = process.env.TELIT_KEY;
 const USERNAME = process.env.TELIT_USERNAME;
 const PASSWORD = process.env.TELIT_PASSWORD;
 
-let token: string = null;
+const DEBOUNCE_DELAY = parseInt(process.env.DEBOUNCE_DELAY, 10);
+const REQUESETS_LIMIT = parseInt(process.env.REQUESETS_LIMIT, 10);
 
-export const login = async () => {
+let token: string = null;
+let authRequestsAmount = 0;
+let getStateRequestsAmount = 0;
+
+export const login = debounce(async () => {
     try {
+        if (authRequestsAmount > REQUESETS_LIMIT) return;
+
+        authRequestsAmount++;
+
         const { data: newToken } = await axios.post(`${BASE_URL}/rest/auth`, qs.stringify({ username: USERNAME, password: PASSWORD }));
 
         token = newToken;
+        authRequestsAmount = 0
     }
     catch (err) {
-        console.error(err);
+        console.error('err login');
     }
-};
+}, DEBOUNCE_DELAY);
 
 export const getSensorValue = async (sensorName: string) => {
     try {
-        const { success, sensors } = await getState();
+        const res = await getState();
 
-        return success ? sensors[sensorName] : null;
+        return res && res.success ? res.sensors[sensorName] : null;
     }
     catch (err) {
         console.error(err);
@@ -32,21 +42,31 @@ export const getSensorValue = async (sensorName: string) => {
 
 export const getAlarmValue = async (sensorName: string) => {
     try {
-        const { success, alarms } = await getState();
+        const res = await getState();
 
-        return success ? alarms[sensorName] : null;
+        return res && res.success ? res.alarms[sensorName] : null;
     }
     catch (err) {
-        console.error(err);
+        console.error('err getAlarmValue');
     }
 };
 
-const getState = async () => {
-    const { data: { list: { success, params: { result } } } } = await axios.post(`${BASE_URL}/api`, JSON.stringify(config()));
-    const { alarms, properties: sensors } = success ? result[0] : { alarms: null, properties: null};
+const getState = debounce(async () => {
+    if (getStateRequestsAmount > REQUESETS_LIMIT) return;
+
+    getStateRequestsAmount++;
+
+    const { data } = await axios.post(`${BASE_URL}/api`, JSON.stringify(config()));
+    const success = data.success || (data.list && data.list.success) || false;
+
+    if (!success) return { success, alarms: null, sensors: null };
+
+    const { list: { params: { result: [{ alarms, properties: sensors }] } } } = data;
+
+    getStateRequestsAmount = 0;
 
     return { success, alarms, sensors };
-};
+}, DEBOUNCE_DELAY);
 
 const config = () => ({
     list: {

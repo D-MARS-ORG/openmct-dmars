@@ -12,7 +12,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO().listen(server);
 const port = process.env.PORT || 8080;
-const url = `http://localhost:${port}`;
+const url = `localhost:${port}`;
 
 app.use('/', Router(habitate));
 

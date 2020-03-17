@@ -1,4 +1,4 @@
-export default abstract class Sensor {
+export default abstract class StateItem {
     Name: string;
     Value: any;
     Manipulate?: (val:any) => any;
