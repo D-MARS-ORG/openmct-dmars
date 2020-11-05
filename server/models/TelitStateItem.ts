@@ -1,5 +1,5 @@
 import { login } from '../telit-client';
-import StateItem from './StateItem.';
+import StateItem from './StateItem';
 
 export default abstract class TelitStateItem extends StateItem {
     abstract GetStateItemValue(name: string): Promise<any>;
