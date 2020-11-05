@@ -1,9 +1,6 @@
-import { login } from './telit-client';
-
 import StateItem from './models/StateItem';
 import StateItemInfo from './models/StateItemInfo';
-import TelitSensor from './models/TelitSensor';
-import TelitAlarm from './models/TelitAlarm';
+import FirebaseStateItem from './models/FirebaseStateItem';
 
 class Habitate {
     readonly stateItems: StateItem[];
@@ -12,22 +9,7 @@ class Habitate {
 
     constructor() {
         this.stateItems = [
-            new TelitSensor("acetone", 0),
-            new TelitSensor("amonium", 0),
-            new TelitSensor("methanol", 0),
-            new TelitSensor("ethanol", 0),
-            new TelitSensor("co", 0),
-            new TelitSensor("co2", 0),
-            new TelitSensor("battlevel", 0, val => val / 1000),
-            new TelitSensor("earthquake_value", 0, val => val > 0),
-            new TelitSensor("light_value", 0),
-            new TelitSensor("sound_value", 0),
-            new TelitSensor("uv_value", 0),
-            new TelitAlarm("battlevelalarm", 0),
-            new TelitAlarm("light_sensor", 0),
-            new TelitAlarm("accel", 0),
-            new TelitAlarm("uv_sensor", 0),
-            new TelitAlarm("sound_sensor", 0)
+            new FirebaseStateItem("temperature", 0, "Temperature", "Celsius")
         ];
 
         this.stateItems.forEach(s => this.history[s.Name] = [], this);
@@ -51,17 +33,11 @@ class Habitate {
     }
 
     async init() {
-        await this.authenticate();
-
         setInterval(function () {
             this.update();
             this.notifyListeners();
         }.bind(this), 1000);
     };
-
-    async authenticate() {
-        await login();
-    }
 
     update() {
         this.stateItems.forEach(s => s.Update());
