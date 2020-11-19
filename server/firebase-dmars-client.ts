@@ -1,16 +1,18 @@
 import axios from 'axios';
-import debounce from 'debounce-promise';
+import debounce from 'debounce-promise';;
 
-const BASE_URL = 'https://d-mars.firebaseio.com/telemetry/sandbox/v1/70276156-db9a-4a58-8125-b1401dad82a8/Habitat/Laboratory/b50321b6-479b-45a8-8d34-b085c062dfe0/9ab93a61-bfad-442a-b551-5a155545bb60';
+import IFirebaseDmarsItem from './models/IFirebaseDmarsItem'
+
+const BASE_URL = 'https://d-mars.firebaseio.com/telemetry/sandbox/v1/data.json';
 
 const DEBOUNCE_DELAY = parseInt(process.env.DEBOUNCE_DELAY, 10);
 const REQUESETS_LIMIT = parseInt(process.env.REQUESETS_LIMIT, 10);
 
 let getRequestsAmount = 0;
 
-export const getSensorValue = async (dataType: string, mesurementUnit: string) => {
+export const getSensorValue = async (nodeId: string, dataType: string, mesurementUnit: string) => {
     try {
-        const res = await getValue(dataType, mesurementUnit);
+        const res = await getValue(nodeId, dataType, mesurementUnit);
 
         return res;
     }
@@ -19,14 +21,16 @@ export const getSensorValue = async (dataType: string, mesurementUnit: string) =
     }
 };
 
-const getValue = debounce(async (dataType: string, mesurementUnit: string) => {
+const getValue = debounce(async (nodeId: string, dataType: string, mesurementUnit: string) => {
     if (getRequestsAmount > REQUESETS_LIMIT) return;
 
     getRequestsAmount++;
 
-    const { data } = await axios.get(`${BASE_URL}/${dataType}/${mesurementUnit}.json?print=pretty&orderBy="timestamp"&limitToLast=1`);
-    const key = Object.keys(data)[0];
-    const { value } = data[key];
+    const { data } = await axios.get(`${BASE_URL}?print=pretty&orderBy="node-id"&equalTo="${nodeId}"`);
+
+    const { value } = Object.values(data)
+        .filter((v: IFirebaseDmarsItem) => v['data-type'] === 'Temperature' && v['measurement-unit'] === 'Celsius')
+        .sort((a: IFirebaseDmarsItem, b: IFirebaseDmarsItem) => b.timestamp - a.timestamp)[0] as IFirebaseDmarsItem;
 
     getRequestsAmount = 0;
 

@@ -9,7 +9,8 @@ class Habitate {
 
     constructor() {
         this.stateItems = [
-            new FirebaseStateItem("temperature", 0, "Temperature", "Celsius")
+            new FirebaseStateItem("temperature-9ab93a61-bfad-442a-b551-5a155545bb60", 0, "Temperature", "Celsius", "9ab93a61-bfad-442a-b551-5a155545bb60"),
+            new FirebaseStateItem("temperature-417fa14f-c213-4255-92a4-49d766ede1de", 0, "Temperature", "Celsius", "417fa14f-c213-4255-92a4-49d766ede1de"),
         ];
 
         this.stateItems.forEach(s => this.history[s.Name] = [], this);
