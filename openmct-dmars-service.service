@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenMCT D-Mars Service
+After=network-online.target
+
+[Service]
+Restart=on-failure
+WorkingDirectory=/var/opt/openmct-dmars
+ExecStart=/usr/bin/node /var/opt/openmct-dmars/server/app.js
+
+[Install]
+WantedBy=multi-user.target

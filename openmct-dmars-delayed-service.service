@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenMCT D-Mars Delayed Service
+After=network-online.target
+
+[Service]
+Restart=on-failure
+WorkingDirectory=/var/opt/openmct-dmars-delayed
+ExecStart=/usr/bin/node /var/opt/openmct-dmars-delayed/server/app.js
+
+[Install]
+WantedBy=multi-user.target

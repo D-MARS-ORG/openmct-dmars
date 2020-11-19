@@ -2,15 +2,26 @@ import StateItem from './models/StateItem';
 import StateItemInfo from './models/StateItemInfo';
 import FirebaseStateItem from './models/FirebaseStateItem';
 
+const minutesDelay = (minDelay: number) => {
+    const d = new Date(0);
+    d.setMinutes(minDelay);
+
+    return d;
+};
+
 class Habitate {
     readonly stateItems: StateItem[];
     readonly history: { [key: string]: StateItemInfo[] } = {};
     readonly listeners: ((s: StateItemInfo) => void)[] = [];
 
     constructor() {
+        const temMinutesDelay = minutesDelay(10);
+
         this.stateItems = [
             new FirebaseStateItem("temperature-9ab93a61-bfad-442a-b551-5a155545bb60", 0, "Temperature", "Celsius", "9ab93a61-bfad-442a-b551-5a155545bb60"),
+            new FirebaseStateItem("delayed10Min-temperature-9ab93a61-bfad-442a-b551-5a155545bb60", 0, "Temperature", "Celsius", "9ab93a61-bfad-442a-b551-5a155545bb60", temMinutesDelay),
             new FirebaseStateItem("temperature-417fa14f-c213-4255-92a4-49d766ede1de", 0, "Temperature", "Celsius", "417fa14f-c213-4255-92a4-49d766ede1de"),
+            new FirebaseStateItem("delayed10Min-temperature-417fa14f-c213-4255-92a4-49d766ede1de", 0, "Temperature", "Celsius", "417fa14f-c213-4255-92a4-49d766ede1de", temMinutesDelay),
         ];
 
         this.stateItems.forEach(s => this.history[s.Name] = [], this);
