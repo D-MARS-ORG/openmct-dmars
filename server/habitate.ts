@@ -2,6 +2,8 @@ import StateItem from './models/StateItem';
 import StateItemInfo from './models/StateItemInfo';
 import FirebaseStateItem from './models/FirebaseStateItem';
 
+const UPDATE_INTERVAL_SEC = parseInt(process.env.UPDATE_INTERVAL_SEC, 10);
+
 const minutesDelay = (minDelay: number) => {
     const d = new Date(0);
     d.setMinutes(minDelay);
@@ -48,7 +50,7 @@ class Habitate {
         setInterval(function () {
             this.update();
             this.notifyListeners();
-        }.bind(this), 1000);
+        }.bind(this), UPDATE_INTERVAL_SEC * 1000);
     };
 
     update() {

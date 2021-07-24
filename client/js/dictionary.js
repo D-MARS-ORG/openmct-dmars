@@ -11,8 +11,8 @@ const dictionary = {
             "name": "Sensors",
             "location": "firebase"
         },
-/*         "temperature-9ab93a61-bfad-442a-b551-5a155545bb60": {
-            "name": "Temperature",
+        "delayed10Min-temperature-417fa14f-c213-4255-92a4-49d766ede1de": {
+            "name": "Temperature (10 Min Delay)",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -39,7 +39,7 @@ const dictionary = {
                     }
                 ]
             }
-        }, */
+        },
         "temperature-417fa14f-c213-4255-92a4-49d766ede1de": {
             "name": "Temperature",
             "type": "telemetryPoint",

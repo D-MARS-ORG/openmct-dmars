@@ -13,7 +13,7 @@ const app = express();
 
 const server = http.createServer(app);
 const io = socketIO().listen(server);
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
 const url = `localhost:${port}`;
 
 app.use(cors());
