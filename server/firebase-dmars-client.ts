@@ -46,7 +46,7 @@ const getDelayedValue = debounce(async (nodeId: string, dataType: string, mesure
     return item ? item.value : 0;
 }, UPDATE_INTERVAL_SEC);
 
-const isBeforeDelay = (item: IFirebaseDmarsItem, currentDate: Date, delay: Date) => diffMinutes(currentDate, new Date(item.timestamp * 1000)) === delay.getMinutes();
+const isBeforeDelay = (item: IFirebaseDmarsItem, currentDate: Date, delay: Date) => diffMinutes(currentDate, new Date(item.timestamp * 1000)) >= delay.getMinutes();
 
 const diffMinutes = (dt1: Date, dt2: Date) => {
     const diff = (dt1.getTime() - dt2.getTime()) / 1000 / 60;

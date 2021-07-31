@@ -20,8 +20,6 @@ class Habitate {
         const temMinutesDelay = minutesDelay(10);
 
         this.stateItems = [
-            new FirebaseStateItem("temperature-9ab93a61-bfad-442a-b551-5a155545bb60", 0, "Temperature", "Celsius", "9ab93a61-bfad-442a-b551-5a155545bb60"),
-            new FirebaseStateItem("delayed10Min-temperature-9ab93a61-bfad-442a-b551-5a155545bb60", 0, "Temperature", "Celsius", "9ab93a61-bfad-442a-b551-5a155545bb60", temMinutesDelay),
             new FirebaseStateItem("temperature-417fa14f-c213-4255-92a4-49d766ede1de", 0, "Temperature", "Celsius", "417fa14f-c213-4255-92a4-49d766ede1de"),
             new FirebaseStateItem("delayed10Min-temperature-417fa14f-c213-4255-92a4-49d766ede1de", 0, "Temperature", "Celsius", "417fa14f-c213-4255-92a4-49d766ede1de", temMinutesDelay),
         ];
