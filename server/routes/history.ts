@@ -1,9 +1,9 @@
 import express from 'express';
 
-import Habitate from './../habitate';
+import Habitat from './../habitat';
 import StateItemInfo from '../models/StateItemInfo';
 
-export default (habitate: Habitate) => {
+export default (habitat: Habitat) => {
     const router = express.Router();
 
     router.get('/:stateItemName', ({ query: { start, end }, params: { stateItemName } }, res) => {
@@ -11,7 +11,7 @@ export default (habitate: Habitate) => {
 
         const sensorInfoData = stateItemNames.reduce(
             (resp, stateItemName) => resp.concat(
-                habitate.history[stateItemName].filter((p: StateItemInfo) => p.Timestamp > +start && p.Timestamp < +end)
+                habitat.history[stateItemName].filter((p: StateItemInfo) => p.Timestamp > +start && p.Timestamp < +end)
             ), []);
 
         const data = sensorInfoData.map((s: StateItemInfo) => ({name: s.Name, timestamp: s.Timestamp, value: s.Value}));

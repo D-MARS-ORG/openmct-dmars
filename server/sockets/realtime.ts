@@ -1,9 +1,9 @@
 import socketIO from 'socket.io';
 
-import Habitate from './../habitate';
+import Habitat from './../habitat';
 import StateItemInfo from '../models/StateItemInfo';
 
-export default (io: socketIO.Namespace, habitate: Habitate) => {
+export default (io: socketIO.Namespace, habitat: Habitat) => {
     io.on('connection', socket => {
         const notifySubscribers = (stateItemInfo: StateItemInfo) => {
             if (subscribed[stateItemInfo.Name]) {
@@ -11,7 +11,7 @@ export default (io: socketIO.Namespace, habitate: Habitate) => {
             }
         };
 
-        const unlisten = habitate.listen(notifySubscribers);
+        const unlisten = habitat.listen(notifySubscribers);
         const subscribed: { [key: string]: boolean } = { };
 
         const subscribe = (id: string) => {

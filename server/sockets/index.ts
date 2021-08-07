@@ -1,8 +1,8 @@
 import socketIO from 'socket.io';
 
 import Realtime from './realtime';
-import Habitate from './../habitate';
+import Habitat from './../habitat';
 
-export default (io: socketIO.Server, habitate: Habitate) => {
-    Realtime(io.of('/realtime'), habitate);
+export default (io: socketIO.Server, habitat: Habitat) => {
+    Realtime(io.of('/realtime'), habitat);
 };

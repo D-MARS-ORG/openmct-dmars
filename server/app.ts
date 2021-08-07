@@ -6,9 +6,9 @@ import cors from 'cors';
 
 import Router from './routes';
 import InitSockets from './sockets';
-import Habitate from './habitate';
+import Habitat from './habitat';
 
-const habitate = new Habitate();
+const habitat = new Habitat();
 const app = express();
 
 const server = http.createServer(app);
@@ -18,9 +18,9 @@ const url = `localhost:${port}`;
 
 app.use(cors());
 app.options('*', cors());
-app.use('/', Router(habitate));
+app.use('/', Router(habitat));
 
-InitSockets(io, habitate);
+InitSockets(io, habitat);
 
 server.listen(port, () => {
     console.log(`D-MARS Open MCT hosted at http://${url}`);

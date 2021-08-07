@@ -1,5 +1,5 @@
 const namespace = 'd-mars';
-const key = 'habitate026';
+const key = 'habitat026';
 const type = 'telemetryPoint';
 
 const ObjectProvider = {

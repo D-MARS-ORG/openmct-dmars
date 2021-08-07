@@ -11,8 +11,8 @@ const dictionary = {
             "name": "Sensors",
             "location": "firebase"
         },
-        "temperature-417fa14f-c213-4255-92a4-49d766ede1de": {
-            "name": "Temperature",
+        "temperature-MSC-417fa14f-c213-4255-92a4-49d766ede1de": {
+            "name": "Temperature MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -40,8 +40,8 @@ const dictionary = {
                 ]
             }
         },
-        "temperature-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
-            "name": "Temperature",
+        "temperature-MSC-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
+            "name": "Temperature MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -69,8 +69,8 @@ const dictionary = {
                 ]
             }
         },
-        "pressure-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
-            "name": "Pressure",
+        "pressure-MSC-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
+            "name": "Pressure MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -98,8 +98,8 @@ const dictionary = {
                 ]
             }
         },
-        "altitude-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
-            "name": "Altitude",
+        "altitude-MSC-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
+            "name": "Altitude MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -127,8 +127,8 @@ const dictionary = {
                 ]
             }
         },
-        "humidity-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
-            "name": "Humidity",
+        "humidity-MSC-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
+            "name": "Humidity MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -156,8 +156,8 @@ const dictionary = {
                 ]
             }
         },
-        "tvoc-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
-            "name": "TVOC",
+        "tvoc-MSC-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
+            "name": "TVOC MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -185,8 +185,8 @@ const dictionary = {
                 ]
             }
         },
-        "eco2-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
-            "name": "eCO2",
+        "eco2-MSC-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
+            "name": "eCO2 MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -214,8 +214,8 @@ const dictionary = {
                 ]
             }
         },
-        "raw-h2-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
-            "name": "H2",
+        "raw-h2-MSC-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
+            "name": "H2 MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -243,8 +243,8 @@ const dictionary = {
                 ]
             }
         },
-        "raw-ethanol-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
-            "name": "Ethanol",
+        "raw-ethanol-MSC-35d460c9-48b3-428f-98ff-9c57a42fddeb": {
+            "name": "Ethanol MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -272,8 +272,8 @@ const dictionary = {
                 ]
             }
         },
-        "temperature-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
-            "name": "Temperature",
+        "temperature-MSC-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
+            "name": "Temperature MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -301,8 +301,8 @@ const dictionary = {
                 ]
             }
         },
-        "pressure-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
-            "name": "Pressure",
+        "pressure-MSC-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
+            "name": "Pressure MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -330,8 +330,8 @@ const dictionary = {
                 ]
             }
         },
-        "altitude-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
-            "name": "Altitude",
+        "altitude-MSC-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
+            "name": "Altitude MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -359,8 +359,8 @@ const dictionary = {
                 ]
             }
         },
-        "humidity-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
-            "name": "Humidity",
+        "humidity-MSC-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
+            "name": "Humidity MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -388,8 +388,8 @@ const dictionary = {
                 ]
             }
         },
-        "tvoc-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
-            "name": "TVOC",
+        "tvoc-MSC-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
+            "name": "TVOC MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -417,8 +417,8 @@ const dictionary = {
                 ]
             }
         },
-        "eco2-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
-            "name": "eCO2",
+        "eco2-MSC-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
+            "name": "eCO2 MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -446,8 +446,8 @@ const dictionary = {
                 ]
             }
         },
-        "raw-h2-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
-            "name": "H2",
+        "raw-h2-MSC-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
+            "name": "H2 MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
@@ -475,8 +475,8 @@ const dictionary = {
                 ]
             }
         },
-        "raw-ethanol-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
-            "name": "Ethanol",
+        "raw-ethanol-MSC-e82524b8-1067-48af-a7e4-da6583f2f8f0": {
+            "name": "Ethanol MSC",
             "type": "telemetryPoint",
             "location": "sensors",
             "telemetry": {
