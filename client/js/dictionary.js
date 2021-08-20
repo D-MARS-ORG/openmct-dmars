@@ -16,6 +16,16 @@ const dictionary = {
             "name": "SensorCluster3",
             "location": "habitat026"
         },
+        "SensorCluster4": {
+            "type": "folder",
+            "name": "SensorCluster4",
+            "location": "habitat026"
+        },
+        "SensorCluster5": {
+            "type": "folder",
+            "name": "SensorCluster5",
+            "location": "habitat026"
+        },
         "temperature-417fa14f-c213-4255-92a4-49d766ede1de": {
             "name": "Temperature",
             "type": "telemetryPoint",
@@ -508,6 +518,470 @@ const dictionary = {
                     }
                 ]
             }
-        }        
+        },
+        "temperature-af281f1c-c732-4443-9a67-ccf4ff9f7f68": {
+            "name": "Temperature",
+            "type": "telemetryPoint",
+            "location": "SensorCluster4",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "Celsius",
+                        "format": "double",
+                        "min": -100,
+                        "max": 100,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "pressure-3a1a0d78-56a3-4a14-a6a6-582f66276501": {
+            "name": "Pressure",
+            "type": "telemetryPoint",
+            "location": "SensorCluster4",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "hPa",
+                        "format": "integer",
+                        "min": 300,
+                        "max": 1100,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "altitude-8637c07a-f715-40e6-8164-60daf3d65735": {
+            "name": "Altitude",
+            "type": "telemetryPoint",
+            "location": "SensorCluster4",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "Meters",
+                        "format": "integer",
+                        "min": 0,
+                        "max": 10000,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "humidity-48b738c0-009a-405a-afe9-98b5c28b4079": {
+            "name": "Humidity",
+            "type": "telemetryPoint",
+            "location": "SensorCluster4",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "Percentage",
+                        "format": "integer",
+                        "min": 0,
+                        "max": 100,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "tvoc-4dd6d76f-896b-4ae7-8d82-b61a26762d9c": {
+            "name": "TVOC",
+            "type": "telemetryPoint",
+            "location": "SensorCluster4",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "ppb",
+                        "format": "integer",
+                        "min": 0,
+                        "max": 60000,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "eco2-fabde604-6e05-46d0-a0ce-fbe16a65d395": {
+            "name": "eCO2",
+            "type": "telemetryPoint",
+            "location": "SensorCluster4",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "ppm",
+                        "format": "integer",
+                        "min": 400,
+                        "max": 60000,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "raw-h2-5d9bfdce-1830-400b-87b7-a51b7f73a825": {
+            "name": "H2",
+            "type": "telemetryPoint",
+            "location": "SensorCluster4",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "ppm",
+                        "format": "integer",
+                        "min": 0,
+                        "max": 100000,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "raw-ethanol-b0f5f14a-c826-4715-a773-242310b5d8bb": {
+            "name": "Ethanol",
+            "type": "telemetryPoint",
+            "location": "SensorCluster4",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "ppm",
+                        "format": "integer",
+                        "min": 0,
+                        "max": 100000,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "temperature-0104fbed-e735-4a81-b694-7065807af3ed": {
+            "name": "Temperature",
+            "type": "telemetryPoint",
+            "location": "SensorCluster5",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "Celsius",
+                        "format": "double",
+                        "min": -100,
+                        "max": 100,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "pressure-90995cdf-b738-4878-813c-98da5f15e959": {
+            "name": "Pressure",
+            "type": "telemetryPoint",
+            "location": "SensorCluster5",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "hPa",
+                        "format": "integer",
+                        "min": 300,
+                        "max": 1100,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "altitude-e1bd197d-a72a-446c-bcfd-a1d3981b93ea": {
+            "name": "Altitude",
+            "type": "telemetryPoint",
+            "location": "SensorCluster5",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "Meters",
+                        "format": "integer",
+                        "min": 0,
+                        "max": 10000,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "humidity-01acf1e5-8f53-47a7-838e-2679ca663526": {
+            "name": "Humidity",
+            "type": "telemetryPoint",
+            "location": "SensorCluster5",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "Percentage",
+                        "format": "integer",
+                        "min": 0,
+                        "max": 100,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "tvoc-3a350525-2500-453f-b23d-e5b02ff19b38": {
+            "name": "TVOC",
+            "type": "telemetryPoint",
+            "location": "SensorCluster5",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "ppb",
+                        "format": "integer",
+                        "min": 0,
+                        "max": 60000,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "eco2-60730cd9-f2a0-4d88-9b38-28e2292df132": {
+            "name": "eCO2",
+            "type": "telemetryPoint",
+            "location": "SensorCluster5",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "ppm",
+                        "format": "integer",
+                        "min": 400,
+                        "max": 60000,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "raw-h2-a9abcfef-427c-4a6e-895b-adbc8398cbe7": {
+            "name": "H2",
+            "type": "telemetryPoint",
+            "location": "SensorCluster5",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "ppm",
+                        "format": "integer",
+                        "min": 0,
+                        "max": 100000,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "raw-ethanol-227e6b22-b859-420f-b47b-9e88e69541aa": {
+            "name": "Ethanol",
+            "type": "telemetryPoint",
+            "location": "SensorCluster5",
+            "telemetry": {
+                "values": [
+                    {
+                        "key": "value",
+                        "name": "Value",
+                        "units": "ppm",
+                        "format": "integer",
+                        "min": 0,
+                        "max": 100000,
+                        "hints": {
+                            "range": 1
+                        }
+                    },
+                    {
+                        "key": "utc",
+                        "source": "timestamp",
+                        "name": "Timestamp",
+                        "format": "utc",
+                        "hints": {
+                            "domain": 1
+                        }
+                    }
+                ]
+            }
+        }
     }
 }
