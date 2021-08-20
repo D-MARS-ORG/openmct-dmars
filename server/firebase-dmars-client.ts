@@ -7,15 +7,19 @@ const BASE_URL = 'https://d-mars.firebaseio.com/telemetry/production/v1/data.jso
 const CONTINUOUS_REQUESETS_LIMIT = parseInt(process.env.CONTINUOUS_REQUESETS_LIMIT, 10);
 const RESTART_REQUESTS_COUNT_DELAY_SEC = parseInt(process.env.RESTART_REQUESTS_COUNT_DELAY_SEC, 60);
 
-let getRequestsAmount = 0;
+let requestsAmounts: { [key: string]: number; } = {};
 
 setInterval(() => {
-    getRequestsAmount = 0;
+    requestsAmounts = {};
 }, RESTART_REQUESTS_COUNT_DELAY_SEC * 1000);
 
 export const getSensorValue = async (nodeId: string, dataType: string, mesurementUnit: string, delay: Date) => {
     try {
-        const res = delay.getTime() !== new Date(0).getTime() ?
+    if (getRequestsAmount(nodeId) > CONTINUOUS_REQUESETS_LIMIT) return;
+
+    updateRequestsAmount(nodeId);
+
+    const res = delay.getTime() !== new Date(0).getTime() ?
             await getDelayedValue(nodeId, dataType, mesurementUnit, delay) :
             await getValue(nodeId, dataType, mesurementUnit);
 
@@ -27,10 +31,6 @@ export const getSensorValue = async (nodeId: string, dataType: string, mesuremen
 };
 
 const getDelayedValue = async (nodeId: string, dataType: string, mesurementUnit: string, delay: Date) => {
-    if (getRequestsAmount > CONTINUOUS_REQUESETS_LIMIT) return;
-
-    getRequestsAmount++;
-
     const currentDate = new Date();
     const url = `${BASE_URL}?print=pretty&orderBy="node-id"&equalTo="${nodeId}"`;
     const { data } = await axios.get(url);
@@ -54,10 +54,6 @@ const diffMinutes = (dt1: Date, dt2: Date) => {
 }
 
 const getValue = async (nodeId: string, dataType: string, mesurementUnit: string) => {
-    if (getRequestsAmount > CONTINUOUS_REQUESETS_LIMIT) return;
-
-    getRequestsAmount++;
-
     const url = `${BASE_URL}?print=pretty&orderBy="node-id"&equalTo="${nodeId}"`;
     const { data } = await axios.get(url);
 
@@ -67,3 +63,14 @@ const getValue = async (nodeId: string, dataType: string, mesurementUnit: string
 
     return value;
 };
+
+const updateRequestsAmount = (nodeId: string) => {
+    if(!(nodeId in requestsAmounts))
+    {
+        requestsAmounts[nodeId] = 0;
+    }
+
+    requestsAmounts[nodeId]++;
+};
+
+const getRequestsAmount = (nodeId: string) => nodeId in requestsAmounts ? requestsAmounts[nodeId] : 0;
