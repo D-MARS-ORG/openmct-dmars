@@ -1,13 +1,15 @@
 import axios from 'axios';
-
 import IFirebaseDmarsItem from './models/IFirebaseDmarsItem'
 
-const BASE_URL = 'https://d-mars.firebaseio.com/telemetry/production/v1/data.json';
+const Cache = require('timed-cache')
 
+const BASE_URL = 'https://d-mars.firebaseio.com/telemetry/production/v1/data.json';
 const CONTINUOUS_REQUESETS_LIMIT = parseInt(process.env.CONTINUOUS_REQUESETS_LIMIT, 10);
 const RESTART_REQUESTS_COUNT_DELAY_SEC = parseInt(process.env.RESTART_REQUESTS_COUNT_DELAY_SEC, 60);
+const LIMIT_LAST = parseInt(process.env.LIMIT_LAST, 60);
 
 let requestsAmounts: { [key: string]: number; } = {};
+const cache = new Cache({ defaultTtl: 10 * 60 * 1000 });
 
 setInterval(() => {
     requestsAmounts = {};
@@ -20,7 +22,7 @@ export const getSensorValue = async (nodeId: string, dataType: string, mesuremen
     updateRequestsAmount(nodeId);
 
     const res = delay.getTime() !== new Date(0).getTime() ?
-            await getDelayedValue(nodeId, dataType, mesurementUnit, delay) :
+            await getDelayedValue(nodeId, delay) :
             await getValue(nodeId, dataType, mesurementUnit);
 
         return res;
@@ -30,19 +32,11 @@ export const getSensorValue = async (nodeId: string, dataType: string, mesuremen
     }
 };
 
-const getDelayedValue = async (nodeId: string, dataType: string, mesurementUnit: string, delay: Date) => {
+const getDelayedValue = async (nodeId: string, delay: Date) => {
     const currentDate = new Date();
-    const url = `${BASE_URL}?print=pretty&orderBy="node-id"&equalTo="${nodeId}"`;
-    const { data } = await axios.get(url);
+    const beforeDelayDate = new Date(currentDate.getTime() + delay.getTime());
 
-    const item = Object.values(data)
-        .filter((v: IFirebaseDmarsItem) =>
-            v['data-type'] === dataType &&
-            v['measurement-unit'] === mesurementUnit &&
-            isBeforeDelay(v, currentDate, delay))
-        .sort((a: IFirebaseDmarsItem, b: IFirebaseDmarsItem) => b.timestamp - a.timestamp)[0] as IFirebaseDmarsItem;
-
-    return item ? item.value : 0;
+    return cache.get({ nodeId, date: beforeDelayDate }) ?? 0;
 }
 
 const isBeforeDelay = (item: IFirebaseDmarsItem, currentDate: Date, delay: Date) => diffMinutes(currentDate, new Date(item.timestamp * 1000)) >= delay.getMinutes();
@@ -54,12 +48,17 @@ const diffMinutes = (dt1: Date, dt2: Date) => {
 }
 
 const getValue = async (nodeId: string, dataType: string, mesurementUnit: string) => {
-    const url = `${BASE_URL}?print=pretty&orderBy="node-id"&equalTo="${nodeId}"`;
+    const url = `${BASE_URL}?print=pretty&orderBy="timestamp"&limitToLast=${LIMIT_LAST}"`;
     const { data } = await axios.get(url);
+    const currentDate = new Date();
 
     const { value } = Object.values(data)
-        .filter((v: IFirebaseDmarsItem) => v['data-type'] === dataType && v['measurement-unit'] === mesurementUnit)
-        .sort((a: IFirebaseDmarsItem, b: IFirebaseDmarsItem) => b.timestamp - a.timestamp)[0] as IFirebaseDmarsItem;
+        .filter((v: IFirebaseDmarsItem) =>
+            v['data-type'] === dataType &&
+            v['measurement-unit'] === mesurementUnit &&
+            v['node-id'] === nodeId)[0] as IFirebaseDmarsItem;
+
+    cache.put({ nodeId, date: currentDate }, value);
 
     return value;
 };
