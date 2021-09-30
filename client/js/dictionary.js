@@ -1,64 +1,30 @@
 const dictionary = {
     "rootId": "habitat026",
     "openmct": {
-        "SensorCluster1": {
+        "OutsideSensors": {
             "type": "folder",
-            "name": "SensorCluster1",
+            "name": "OutsideSensors",
             "location": "habitat026"
         },
-        "SensorCluster2": {
+        "Habitat1Sensors": {
             "type": "folder",
-            "name": "SensorCluster2",
+            "name": "Habitat1Sensors",
             "location": "habitat026"
         },
-        "SensorCluster3": {
+        "Habitat2Sensors": {
             "type": "folder",
-            "name": "SensorCluster3",
+            "name": "Habitat2Sensors",
             "location": "habitat026"
         },
-        "SensorCluster4": {
+        "AirlockSensors": {
             "type": "folder",
-            "name": "SensorCluster4",
+            "name": "AirlockSensors",
             "location": "habitat026"
-        },
-        "SensorCluster5": {
-            "type": "folder",
-            "name": "SensorCluster5",
-            "location": "habitat026"
-        },
-        "temperature-417fa14f-c213-4255-92a4-49d766ede1de": {
-            "name": "Temperature-Cluster1",
-            "type": "telemetryPoint",
-            "location": "SensorCluster1",
-            "telemetry": {
-                "values": [
-                    {
-                        "key": "value",
-                        "name": "Value [Celsius]",
-                        "units": "Celsius",
-                        "format": "double",
-                        "min": -100,
-                        "max": 100,
-                        "hints": {
-                            "range": 1
-                        }
-                    },
-                    {
-                        "key": "utc",
-                        "source": "timestamp",
-                        "name": "Timestamp",
-                        "format": "utc",
-                        "hints": {
-                            "domain": 1
-                        }
-                    }
-                ]
-            }
         },
         "temperature-d83b1285-b2c3-4e90-bc0f-52cae41e781e": {
-            "name": "Temperature-Cluster2",
+            "name": "Temperature-Outside",
             "type": "telemetryPoint",
-            "location": "SensorCluster2",
+            "location": "OutsideSensors",
             "telemetry": {
                 "values": [
                     {
@@ -85,9 +51,9 @@ const dictionary = {
             }
         },
         "pressure-81561394-a6f5-47b6-aabd-434861837fd7": {
-            "name": "Pressure-Cluster2",
+            "name": "Pressure-Outside",
             "type": "telemetryPoint",
-            "location": "SensorCluster2",
+            "location": "OutsideSensors",
             "telemetry": {
                 "values": [
                     {
@@ -114,9 +80,9 @@ const dictionary = {
             }
         },
         "altitude-1416a19d-ff5f-4e89-9ef8-a43977c6f210": {
-            "name": "Altitude-Cluster2",
+            "name": "Altitude-Outside",
             "type": "telemetryPoint",
-            "location": "SensorCluster2",
+            "location": "OutsideSensors",
             "telemetry": {
                 "values": [
                     {
@@ -143,9 +109,9 @@ const dictionary = {
             }
         },
         "humidity-b0052e24-8bb8-4d42-a732-d19c4f642a7c": {
-            "name": "Humidity-Cluster2",
+            "name": "Humidity-Outside",
             "type": "telemetryPoint",
-            "location": "SensorCluster2",
+            "location": "OutsideSensors",
             "telemetry": {
                 "values": [
                     {
@@ -172,9 +138,9 @@ const dictionary = {
             }
         },
         "tvoc-3fa885bc-f90a-41f6-99af-984aa2ec6cc0": {
-            "name": "TVOC-Cluster2",
+            "name": "TVOC-Outside",
             "type": "telemetryPoint",
-            "location": "SensorCluster2",
+            "location": "OutsideSensors",
             "telemetry": {
                 "values": [
                     {
@@ -201,9 +167,9 @@ const dictionary = {
             }
         },
         "eco2-21f24631-adef-487e-837a-fcd03606bb82": {
-            "name": "eCO2-Cluster2",
+            "name": "eCO2-Outside",
             "type": "telemetryPoint",
-            "location": "SensorCluster2",
+            "location": "OutsideSensors",
             "telemetry": {
                 "values": [
                     {
@@ -230,9 +196,9 @@ const dictionary = {
             }
         },
         "raw-h2-3138798d-8317-48cb-8d01-1c934d3aaf2f": {
-            "name": "H2-Cluster2",
+            "name": "H2-Outside",
             "type": "telemetryPoint",
-            "location": "SensorCluster2",
+            "location": "OutsideSensors",
             "telemetry": {
                 "values": [
                     {
@@ -259,9 +225,9 @@ const dictionary = {
             }
         },
         "raw-ethanol-a08f1a42-0120-4d84-a747-2bc86a8c7b48": {
-            "name": "Ethanol-Cluster2",
+            "name": "Ethanol-Outside",
             "type": "telemetryPoint",
-            "location": "SensorCluster2",
+            "location": "OutsideSensors",
             "telemetry": {
                 "values": [
                     {
@@ -288,9 +254,9 @@ const dictionary = {
             }
         },
         "temperature-ff4b8240-80d7-47cd-9ede-6d56752c88db": {
-            "name": "Temperature-Cluster3",
+            "name": "Temperature-Habitat1",
             "type": "telemetryPoint",
-            "location": "SensorCluster3",
+            "location": "Habitat1Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -317,9 +283,9 @@ const dictionary = {
             }
         },
         "pressure-4c884c66-7e37-4140-b872-b0e4722ddde1": {
-            "name": "Pressure-Cluster3",
+            "name": "Pressure-Habitat1",
             "type": "telemetryPoint",
-            "location": "SensorCluster3",
+            "location": "Habitat1Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -346,9 +312,9 @@ const dictionary = {
             }
         },
         "altitude-cd6b89ea-51f2-4911-8aad-bb6a339fb594": {
-            "name": "Altitude-Cluster3",
+            "name": "Altitude-Habitat1",
             "type": "telemetryPoint",
-            "location": "SensorCluster3",
+            "location": "Habitat1Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -375,9 +341,9 @@ const dictionary = {
             }
         },
         "humidity-8837e6c0-1fd6-4e6e-a3cd-da69367135a7": {
-            "name": "Humidity-Cluster3",
+            "name": "Humidity-Habitat1",
             "type": "telemetryPoint",
-            "location": "SensorCluster3",
+            "location": "Habitat1Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -404,9 +370,9 @@ const dictionary = {
             }
         },
         "tvoc-97bf84a8-4810-47cf-930d-f49ca733d2c1": {
-            "name": "TVOC-Cluster3",
+            "name": "TVOC-Habitat1",
             "type": "telemetryPoint",
-            "location": "SensorCluster3",
+            "location": "Habitat1Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -433,9 +399,9 @@ const dictionary = {
             }
         },
         "eco2-ad702d2d-a134-407b-9cf7-270151ee177e": {
-            "name": "eCO2-Cluster3",
+            "name": "eCO2-Habitat1",
             "type": "telemetryPoint",
-            "location": "SensorCluster3",
+            "location": "Habitat1Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -462,9 +428,9 @@ const dictionary = {
             }
         },
         "raw-h2-7fe15b40-7e4c-4382-8b92-ce2f019d5d31": {
-            "name": "H2-Cluster3",
+            "name": "H2-Habitat1",
             "type": "telemetryPoint",
-            "location": "SensorCluster3",
+            "location": "Habitat1Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -491,9 +457,9 @@ const dictionary = {
             }
         },
         "raw-ethanol-2b01ca31-35fa-479f-a61c-ff47f6f7af5d": {
-            "name": "Ethanol-Cluster3",
+            "name": "Ethanol-Habitat1",
             "type": "telemetryPoint",
-            "location": "SensorCluster3",
+            "location": "Habitat1Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -520,9 +486,9 @@ const dictionary = {
             }
         },
         "temperature-af281f1c-c732-4443-9a67-ccf4ff9f7f68": {
-            "name": "Temperature-Cluster4",
+            "name": "Temperature-Habitat2",
             "type": "telemetryPoint",
-            "location": "SensorCluster4",
+            "location": "Habitat2Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -549,9 +515,9 @@ const dictionary = {
             }
         },
         "pressure-3a1a0d78-56a3-4a14-a6a6-582f66276501": {
-            "name": "Pressure-Cluster4",
+            "name": "Pressure-Habitat2",
             "type": "telemetryPoint",
-            "location": "SensorCluster4",
+            "location": "Habitat2Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -578,9 +544,9 @@ const dictionary = {
             }
         },
         "altitude-8637c07a-f715-40e6-8164-60daf3d65735": {
-            "name": "Altitude-Cluster4",
+            "name": "Altitude-Habitat2",
             "type": "telemetryPoint",
-            "location": "SensorCluster4",
+            "location": "Habitat2Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -607,9 +573,9 @@ const dictionary = {
             }
         },
         "humidity-48b738c0-009a-405a-afe9-98b5c28b4079": {
-            "name": "Humidity-Cluster4",
+            "name": "Humidity-Habitat2",
             "type": "telemetryPoint",
-            "location": "SensorCluster4",
+            "location": "Habitat2Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -636,9 +602,9 @@ const dictionary = {
             }
         },
         "tvoc-4dd6d76f-896b-4ae7-8d82-b61a26762d9c": {
-            "name": "TVOC-Cluster4",
+            "name": "TVOC-Habitat2",
             "type": "telemetryPoint",
-            "location": "SensorCluster4",
+            "location": "Habitat2Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -665,9 +631,9 @@ const dictionary = {
             }
         },
         "eco2-fabde604-6e05-46d0-a0ce-fbe16a65d395": {
-            "name": "eCO2-Cluster4",
+            "name": "eCO2-Habitat2",
             "type": "telemetryPoint",
-            "location": "SensorCluster4",
+            "location": "Habitat2Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -694,9 +660,9 @@ const dictionary = {
             }
         },
         "raw-h2-5d9bfdce-1830-400b-87b7-a51b7f73a825": {
-            "name": "H2-Cluster4",
+            "name": "H2-Habitat2",
             "type": "telemetryPoint",
-            "location": "SensorCluster4",
+            "location": "Habitat2Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -723,9 +689,9 @@ const dictionary = {
             }
         },
         "raw-ethanol-b0f5f14a-c826-4715-a773-242310b5d8bb": {
-            "name": "Ethanol-Cluster4",
+            "name": "Ethanol-Habitat2",
             "type": "telemetryPoint",
-            "location": "SensorCluster4",
+            "location": "Habitat2Sensors",
             "telemetry": {
                 "values": [
                     {
@@ -752,9 +718,9 @@ const dictionary = {
             }
         },
         "temperature-0104fbed-e735-4a81-b694-7065807af3ed": {
-            "name": "Temperature-Cluster5",
+            "name": "Temperature-Airlock",
             "type": "telemetryPoint",
-            "location": "SensorCluster5",
+            "location": "AirlockSensors",
             "telemetry": {
                 "values": [
                     {
@@ -781,9 +747,9 @@ const dictionary = {
             }
         },
         "pressure-90995cdf-b738-4878-813c-98da5f15e959": {
-            "name": "Pressure-Cluster5",
+            "name": "Pressure-Airlock",
             "type": "telemetryPoint",
-            "location": "SensorCluster5",
+            "location": "AirlockSensors",
             "telemetry": {
                 "values": [
                     {
@@ -810,9 +776,9 @@ const dictionary = {
             }
         },
         "altitude-e1bd197d-a72a-446c-bcfd-a1d3981b93ea": {
-            "name": "Altitude-Cluster5",
+            "name": "Altitude-Airlock",
             "type": "telemetryPoint",
-            "location": "SensorCluster5",
+            "location": "AirlockSensors",
             "telemetry": {
                 "values": [
                     {
@@ -839,9 +805,9 @@ const dictionary = {
             }
         },
         "humidity-01acf1e5-8f53-47a7-838e-2679ca663526": {
-            "name": "Humidity-Cluster5",
+            "name": "Humidity-Airlock",
             "type": "telemetryPoint",
-            "location": "SensorCluster5",
+            "location": "AirlockSensors",
             "telemetry": {
                 "values": [
                     {
@@ -868,9 +834,9 @@ const dictionary = {
             }
         },
         "tvoc-3a350525-2500-453f-b23d-e5b02ff19b38": {
-            "name": "TVOC-Cluster5",
+            "name": "TVOC-Airlock",
             "type": "telemetryPoint",
-            "location": "SensorCluster5",
+            "location": "AirlockSensors",
             "telemetry": {
                 "values": [
                     {
@@ -897,9 +863,9 @@ const dictionary = {
             }
         },
         "eco2-60730cd9-f2a0-4d88-9b38-28e2292df132": {
-            "name": "eCO2-Cluster5",
+            "name": "eCO2-Airlock",
             "type": "telemetryPoint",
-            "location": "SensorCluster5",
+            "location": "AirlockSensors",
             "telemetry": {
                 "values": [
                     {
@@ -926,9 +892,9 @@ const dictionary = {
             }
         },
         "raw-h2-a9abcfef-427c-4a6e-895b-adbc8398cbe7": {
-            "name": "H2-Cluster5",
+            "name": "H2-Airlock",
             "type": "telemetryPoint",
-            "location": "SensorCluster5",
+            "location": "AirlockSensors",
             "telemetry": {
                 "values": [
                     {
@@ -955,9 +921,9 @@ const dictionary = {
             }
         },
         "raw-ethanol-227e6b22-b859-420f-b47b-9e88e69541aa": {
-            "name": "Ethanol-Cluster5",
+            "name": "Ethanol-Airlock",
             "type": "telemetryPoint",
-            "location": "SensorCluster5",
+            "location": "AirlockSensors",
             "telemetry": {
                 "values": [
                     {

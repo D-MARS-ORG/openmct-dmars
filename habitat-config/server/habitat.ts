@@ -18,7 +18,6 @@ class Habitat {
 
     constructor() {
         this.stateItems = [
-            new FirebaseStateItem("temperature-417fa14f-c213-4255-92a4-49d766ede1de", 0, "Temperature", "Celsius", "417fa14f-c213-4255-92a4-49d766ede1de"),
             new FirebaseStateItem("temperature-d83b1285-b2c3-4e90-bc0f-52cae41e781e", 0, "Temperature", "Celsius", "d83b1285-b2c3-4e90-bc0f-52cae41e781e"),
             new FirebaseStateItem("pressure-81561394-a6f5-47b6-aabd-434861837fd7", 0, "Pressure", "hPa", "81561394-a6f5-47b6-aabd-434861837fd7"),
             new FirebaseStateItem("altitude-1416a19d-ff5f-4e89-9ef8-a43977c6f210", 0, "Altitude", "Meters", "1416a19d-ff5f-4e89-9ef8-a43977c6f210"),
