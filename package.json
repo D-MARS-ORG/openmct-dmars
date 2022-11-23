@@ -40,7 +40,7 @@
     "nodemon": "^2.0.2",
     "openmct": "1.6.2",
     "querystring": "^0.2.0",
-    "socket.io": "^2.4.1",
+    "socket.io": "^2.5.0",
     "typescript": "^3.7.5",
     "ws": "^6.1.2"
   },
